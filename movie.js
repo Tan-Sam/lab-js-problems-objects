@@ -4,7 +4,10 @@ var Movie = function (info) {
   this.maxCapacity    = info.maxCapacity;
   this.seats          = info.seats;
   this.price          = info.price;
-  this.ticketSold     = info.ticketSold;
+  this.ticketSold     = {
+    adult: 0,
+    child: 0
+  };
   this.getRevenue     = function () {
     return (this.price.adult * this.ticketSold.adult) + (this.price.child * this.ticketSold.child);
   };
@@ -36,7 +39,7 @@ var Movie = function (info) {
   };
 };
 
-var info = {
+var batmanInfo = {
   title: 'Batman',
   timeOfPlay: 1600,
   maxCapacity: 20,
@@ -49,16 +52,19 @@ var info = {
   price: {
     adult: 100,
     child: 80
-  },
-  ticketSold: {
-    adult: 0,
-    child: 0
   }
 };
 
-var movie1 = new Movie(info);
+var batman = new Movie(batmanInfo);
 
-var ticket1 = movie.generateTicket([0,1], 'adult');
-var ticket2 = movie.generateTicket([0,2], 'adult');
-var ticket3 = movie.generateTicket([0,3], 'adult');
-var revenue = movie.getRevenue();
+console.log(batman.getRevenue());
+
+var ticketA = batman.generateTicket([0,2], 'adult');
+ticketA.useTicket();
+console.log(ticketA);
+var ticketB = batman.generateTicket([0,3], 'adult');
+ticketB.useTicket();
+ticketB.useTicket(); // second time we use the ticket
+console.log(ticketB);
+
+console.log(batman.getRevenue());

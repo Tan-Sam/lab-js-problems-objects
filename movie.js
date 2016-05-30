@@ -58,7 +58,7 @@ var info = {
 
 var movie1 = new Movie(info);
 
-movie.generateTicket([0,1], 'adult');
-movie.generateTicket([0,2], 'adult');
-movie.generateTicket([0,3], 'adult');
-movie.getRevenue();
+var ticket1 = movie.generateTicket([0,1], 'adult');
+var ticket2 = movie.generateTicket([0,2], 'adult');
+var ticket3 = movie.generateTicket([0,3], 'adult');
+var revenue = movie.getRevenue();
